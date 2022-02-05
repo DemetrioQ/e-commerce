@@ -1,11 +1,11 @@
 import React from 'react';
-import { AppBar, Toolbar, IconButton, Badge, Typography } from '@material-ui/core';
+import { AppBar, Toolbar, IconButton, Badge, Typography, TextField } from '@material-ui/core';
 import { ShoppingCart } from '@material-ui/icons';
 import logo from '../../assets/commerce.png';
 import useStyles from './styles';
 import { Link, useLocation } from 'react-router-dom';
 
-const Navbar = ({ totalItems }) => {
+const Navbar = ({ totalItems, searchQuery, setSearchQuery }) => {
   const classes = useStyles();
   const location = useLocation();
 
@@ -17,6 +17,7 @@ const Navbar = ({ totalItems }) => {
             <img src={logo} alt='e-commerce' height='25px' className={classes.image} />
             E-Commerce
           </Typography>
+          <TextField placeholder='Searchbar' value={searchQuery} style={{ flexGrow: 3 }} onChange={(e) => setSearchQuery(e.target.value)} />;
           <div className={classes.grow} />
           {location.pathname === '/' && (
             <div className={classes.button}>

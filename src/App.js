@@ -8,9 +8,9 @@ const App = () => {
   const [cart, setCart] = useState({});
   const [order, setOrder] = useState({});
   const [errorMessage, setErrorMessage] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
-
     setProducts(data);
   };
 
@@ -38,6 +38,7 @@ const App = () => {
     setCart(cart);
   };
 
+
   const refreshCart = async () => {
     const newCart = await commerce.cart.refresh();
 
@@ -52,7 +53,7 @@ const App = () => {
       refreshCart();
     } catch (error) {
       setErrorMessage(error.data.error.message);
-      console.log(errorMessage)
+      console.log(errorMessage);
     }
   };
 
@@ -64,12 +65,12 @@ const App = () => {
   return (
     <Router>
       <div>
-        <Navbar totalItems={cart.total_items} />
+        <Navbar totalItems={cart.total_items} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
         <Routes>
-          <Route path='/' exact element={<Products products={products} onAddToCart={handleAddToCart} />} />
+          <Route path='/' exact element={<Products products={products} onAddToCart={handleAddToCart} searchQuery={searchQuery} />} />
 
           <Route path='/cart' exact element={<Cart cart={cart} handleUpdateCartQty={handleUpdateCartQty} handleRemoveFromCart={handleRemoveFromCart} handleEmptyCart={handleEmptyCart} />} />
-          <Route path='/checkout' exact element={<Checkout cart={cart} order={order} onCaptureCheckout={handleCaptureCheckout} error={errorMessage}/>} />
+          <Route path='/checkout' exact element={<Checkout cart={cart} order={order} onCaptureCheckout={handleCaptureCheckout} error={errorMessage} />} />
         </Routes>
       </div>
     </Router>

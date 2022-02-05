@@ -17,7 +17,7 @@ const Navbar = ({ totalItems, searchQuery, setSearchQuery }) => {
             <img src={logo} alt='e-commerce' height='25px' className={classes.image} />
             E-Commerce
           </Typography>
-          <TextField placeholder='Searchbar' value={searchQuery} style={{ flexGrow: 3 }} onChange={(e) => setSearchQuery(e.target.value)} />;
+          <TextField placeholder='Searchbar' value={searchQuery} style={{ flexGrow: 3 }} onChange={(e) => setSearchQuery(e.target.value)} />
           <div className={classes.grow} />
           {location.pathname === '/' && (
             <div className={classes.button}>

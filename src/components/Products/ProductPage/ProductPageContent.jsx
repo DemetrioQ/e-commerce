@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { Card, CardMedia, CardContent, CardActions, Typography, IconButton, CircularProgress } from '@material-ui/core';
+import React from 'react';
+import { Card, CardMedia, CardContent, CardActions, Typography, IconButton } from '@material-ui/core';
 import { AddShoppingCart } from '@material-ui/icons';
-import { useParams } from 'react-router-dom';
 import useStyles from './styles';
 
 const ProductPageContent = ({ product }) => {

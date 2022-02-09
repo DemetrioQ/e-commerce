@@ -4,6 +4,7 @@ import Product from './Product/Product';
 import useStyles from './styles';
 
 
+
 const Products = ({ products, onAddToCart, searchQuery }) => {
   const classes = useStyles();
 
@@ -11,10 +12,12 @@ const Products = ({ products, onAddToCart, searchQuery }) => {
     if (!query) {
       return products;
     }
-
     return products.filter((product) => product.name.toLowerCase().includes(query));
   };
+  
+  
   const filteredProducts = filterProducts(products, searchQuery);
+  
   return (
     <main className={classes.content}>
       <div className={classes.toolbar} />

@@ -17,12 +17,11 @@ const PaymentForm = ({ checkoutToken, shippingData, backStep, onCaptureCheckout,
     const { err, paymentMethod } = await stripe.createPaymentMethod({ type: 'card', card: cardElement });
     
     if (err) {
-      console.log(err);
     } else {
       const orderData = {
         line_items: checkoutToken.live.line_items,
         customer: {
-          firstname: shippingData.firtName,
+          firstname: shippingData.firstName,
           lastname: shippingData.lastName,
           email: shippingData.email,
         },
